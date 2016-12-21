@@ -1,0 +1,13 @@
+# Jetbrains stuff
+/.idea/
+
+
+# Temporary files
+\#*
+*.swp
+*.swo
+*~
+
+# Patch-related files
+*.orig
+*.rej
