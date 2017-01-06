@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# Copyright 2016-2017 Laszlo Attila Toth
+# Distributed under the terms of the GNU General Public License v3
+
 $: << File.dirname(File.dirname(File.realpath(__FILE__)))
 require 'reuel/config.rb'
 
