@@ -6,7 +6,6 @@
 $: << File.dirname(File.dirname(File.realpath(__FILE__)))
 require 'reuel/config.rb'
 
-
 cfg = Reuel::Config.new
 
 puts 'Default content'
@@ -25,3 +24,14 @@ puts 'simple => 42,'
 puts 'an => { example => 3.14 },'
 puts '}'
 puts cfg.config
+puts cfg.config
+
+puts 'Get 3.14'
+puts cfg.get('an.example')
+
+puts 'Append 5 and 10 to a (new) list'
+puts cfg.append('a.list', 5)
+puts cfg.append('a.list', 10)
+
+puts 'Print the list'
+puts cfg.get('a.list')
