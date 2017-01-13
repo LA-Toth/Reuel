@@ -21,9 +21,8 @@ module Reuel
     def set(entry, value)
       c, key = get_container_and_key(entry)
 
-      if c.include?(key) and key.instance_of?(Hash)
-
-	c[key] = value
+      if not c.include?(key) or not c[key].instance_of?(Hash)
+        c[key] = value
       end
     end
 
@@ -47,19 +46,15 @@ module Reuel
 
     # @param [String] entry The entry name in config tree, eg. commands.splitlog.delimiter
     def get(entry)
-      puts entry
       keys = entry.split('.')
-      puts keys
-      puts @config
       c = @config
-      puts c
-      return c
 
       begin
-	keys.each { |key| c = c[key] }
-	c = c[key]
+        keys.each do |key|
+          c = c[key]
+        end
       rescue KeyError
-	return @config.default
+        return @config.default
       end
       c
     end
@@ -75,8 +70,8 @@ module Reuel
       c = @config
 
       parents.each do |parent|
-	c[parent] = Hash.new unless c.include?(parent)
-	c = c[parent]
+        c[parent] = Hash.new unless c.include?(parent)
+        c = c[parent]
       end
 
       return c, key
