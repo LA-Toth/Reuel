@@ -1,0 +1,11 @@
+AllCops:
+  TargetRubyVersion: 3.2
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+
+Layout/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false

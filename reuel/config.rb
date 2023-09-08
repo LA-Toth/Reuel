@@ -1,17 +1,16 @@
-# Copyright 2016-2017 Laszlo Attila Toth
+# frozen_string_literal: true
+
+# Copyright 2016-2023 Laszlo Attila Toth
 # Distributed under the terms of the GNU General Public License v3
 
 module Reuel
-  #class EntryNotFound < KeyError
+  # class EntryNotFound < KeyError
   #	nil
-  #end
+  # end
 
   class Config
-
-    public
-
     def initialize
-      @config = Hash.new
+      @config = {}
     end
 
     attr_reader :config
@@ -21,9 +20,9 @@ module Reuel
     def set(entry, value)
       c, key = get_container_and_key(entry)
 
-      if not c.include?(key) or not c[key].instance_of?(Hash)
-        c[key] = value
-      end
+      return unless !c.include?(key) || !c[key].instance_of?(Hash)
+
+      c[key] = value # rubocop: disable Lint/UselessSetterCall
     end
 
     # @param [String] entry The entry name in config tree, eg. commands.splitlog.delimiter, which represents a list
@@ -59,7 +58,6 @@ module Reuel
       c
     end
 
-
     protected
 
     # @param [String] entry
@@ -70,13 +68,11 @@ module Reuel
       c = @config
 
       parents.each do |parent|
-        c[parent] = Hash.new unless c.include?(parent)
+        c[parent] = {} unless c.include?(parent)
         c = c[parent]
       end
 
-      return c, key
+      [c, key]
     end
-
   end
-
 end
