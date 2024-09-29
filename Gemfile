@@ -1,8 +1,15 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+# Specify your gem's dependencies in reuel.gemspec
+gemspec
 
-gem 'rubocop'
+gem 'rake', '~> 13.0'
+
+gem 'rspec', '~> 3.0'
+
+gem 'rubocop', '~> 1.66'
+gem 'rubocop-factory_bot'
+gem 'rubocop-rake'
+gem 'rubocop-rspec'

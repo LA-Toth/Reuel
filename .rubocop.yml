@@ -1,11 +1,77 @@
-AllCops:
-  TargetRubyVersion: 3.2
+require:
+  - rubocop-rspec
+  - rubocop-rake
+  - rubocop-factory_bot
 
-Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
+AllCops:
+  NewCops: enable
+  DisplayStyleGuide: true
+  TargetRubyVersion: 3.3
+  StringLiteralsFrozenByDefault: true
+  Exclude:
+    - 'bin/*'
+
+FactoryBot/SyntaxMethods:
+  Enabled: false
 
 Layout/LineLength:
   Max: 120
 
+Layout/HashAlignment:
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+Layout/FirstArgumentIndentation:
+  EnforcedStyle: consistent_relative_to_receiver
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/BlockLength:
+  CountComments: false
+  CountAsOne: ['array', 'heredoc', 'method_call', 'hash']
+  AllowedMethods:
+    - context
+    - describe
+    - it
+    - shared_examples
+    - shared_examples_for
+    - namespace
+
+Metrics/MethodLength:
+  Max: 20
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+RSpec/NestedGroups:
+  Max: 10
+
+RSpec/ExampleLength:
+  Max: 10
+  CountAsOne:  ['array', 'heredoc', 'hash']
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+Style/BlockComments:
+  Exclude:
+    - spec/spec_helper.rb
+
 Style/Documentation:
   Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes

@@ -1,7 +1,6 @@
 # Jetbrains stuff
 /.idea/
 
-
 # Temporary files
 \#*
 *.swp
@@ -11,3 +10,15 @@
 # Patch-related files
 *.orig
 *.rej
+
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+
+# rspec failure tracking
+.rspec_status
